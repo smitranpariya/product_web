@@ -4,6 +4,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def login():
-    return render_template("index.html")
+    return render_template("login_page.html")
 
 app.run(debug=True)

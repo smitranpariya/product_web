@@ -11,6 +11,8 @@
 }
 .login-bg{
   background-size: cover;
+  background-color: #1761a0;
+  background-image: url("Projects\product_web\static\assets\img\empty-blackboard-with-black-friday-banner.jpg");
   width: 100%;
   height: 100%;
   background-position: center;
