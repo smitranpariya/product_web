@@ -63,12 +63,13 @@
                 <div class="login-two-start">
                     <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Login</h6>
                     <p class="text-center text-muted mt-1 mb-3 font-14">Please Log into your account</p>
+                    <form  id="myForm" action="login" method="post">
                     <div class="login-two-inputs mt-5">
-                        <input type="text" placeholder="Username"/>
+                        <input type="email" placeholder="email" id="email" name="email"/>
                         <i class="las la-user-alt"></i> 
                     </div>
                     <div class="login-two-inputs mt-4">
-                        <input type="password" placeholder="Password"/> 
+                        <input type="password" placeholder="Password" id="password" name="password"/> 
                         <i class="las la-lock"></i>
                     </div>
                     <div class="login-two-inputs  mt-4 check">
@@ -78,13 +79,15 @@
                             <label for="one">Remember me</label>
                           </div>
                     </div>
+                
                     <div class="login-two-inputs mt-5 text-center d-flex">
-                        <button class="ripple-button ripple-button-primary w-100 btn-login ml-3 mr-3" type="button">
+                        <button class="ripple-button ripple-button-primary w-100 btn-login ml-3 mr-3" type="submit">
                             <div class="ripple-ripple js-ripple">
                             <span class="ripple-ripple__circle"></span>
                             </div>
                             Login
                         </button>
+                    </form>
                         <a class="btn btn-sm btn-outline-primary btn-login w-100 ml-3 mr-3" href="auth_signup_2.html" type="button">
                             Signup
                         </a>
@@ -115,6 +118,36 @@
     <script src="{{ url_for('static',filename='common-assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static',filename='assets/js/authentication/auth_2.js') }}"></script>
     <!-- Page Level Plugin/Script Ends -->
+    <script>
+            
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('login succesfully');// Prevent the default form submission
+
+            // Fetch form data
+            const formData = new FormData(this);
+
+            // Send form data to Flask route using AJAX
+            fetch('/do_login', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(data => {
+                console.log(data); // Log response from Flask
+                // Do something with the response if needed
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+        });
+    </script>
+
 </body>
 
 <!-- Mirrored from demo.neptuneapp.xyz/demo-1/ltr/auth_login_2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Mar 2023 12:43:38 GMT -->
