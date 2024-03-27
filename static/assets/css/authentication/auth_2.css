@@ -232,10 +232,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
-.left-content-area .logo{
-  height: 100px;
-  width: 100px;
-}
+
 .left-content-area h2{
   letter-spacing: 0px;
   color: #fff;
