@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Mirrored from demo.neptuneapp.xyz/demo-1/ltr/auth_login_2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Mar 2023 12:43:37 GMT -->
+<!-- Mirrored from demo.neptuneapp.xyz/demo-1/ltr/auth_signup_2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Mar 2023 12:43:38 GMT -->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Neptune Auth Login 2 | Neptune - Multipurpose Bootstrap Admin Dashboard Template</title>
+    <title>Neptune Auth Signup 2 | Neptune - Multipurpose Bootstrap Admin Dashboard Template</title>
     <link rel="icon" type="image/x-icon" href="http://demo.neptuneapp.xyzcommon-assets/img/favicon.ico"/>
     <!-- Common Styles Starts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&amp;display=swap" rel="stylesheet">
@@ -14,7 +14,6 @@
     <link href="{{ url_for('static',filename='assets/css/main.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url_for('static',filename='assets/css/structure.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url_for('static',filename='common-assets/plugins/perfect-scrollbar/perfect-scrollbar.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url_for('static',filename='common-assets/plugins/highlight/styles/monokai-sublime.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url_for('static',filename='common-assets/plugins/highlight/styles/monokai-sublime.css') }}" rel="stylesheet" type="text/css" />
     <!-- Common Styles Ends -->
     <!-- Common Icon Starts -->
@@ -25,8 +24,10 @@
     <link href="{{ url_for('static',filename='assets/css/authentication/auth_2.css') }}" rel="stylesheet" type="text/css">
     <!-- Page Level Plugin/Style Ends -->
     <style>
-        .login-bg{
-            background-image: url("{{url_for('static',filename='assets/img/empty-blackboard-with-black-friday-banner.jpg')}}");
+        .signup-bg{
+            background-image: url("{{url_for('static',filename='assets/img/stairs.jpg')}}");
+            height: 100%;
+            width: 100%;
         }
     </style>
 </head>
@@ -54,60 +55,68 @@
     <div class="container-fluid login-two-container">
         <div class="row main-login-two">
             <div class="col-xl-8 col-lg-7 col-md-7 d-none d-md-block p-0">
-                <div class="login-bg">
-                    <div class="left-content-area" style="position: relative;bottom:50px">
+                <div class="signup-bg">
+                    <div class="left-content-area">
                     </div>
                 </div>
             </div>
             <div class="col-xl-4 col-lg-5 col-md-5 p-0">
                 <div class="login-two-start">
-                    <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Login</h6>
-                    <p class="text-center text-muted mt-1 mb-3 font-14">Please Log into your account</p>
-                    <form  id="myForm" action="login" method="post">
+                    <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Sign Up</h6>
+                    <p class="text-center text-muted mt-1 mb-3 font-14">Fill up and create an account</p>
                     <div class="login-two-inputs mt-5">
-                        <input type="email" placeholder="email" id="email" name="email"/>
+                        <input type="text" placeholder="User Name"/>
                         <i class="las la-user-alt"></i> 
                     </div>
                     <div class="login-two-inputs mt-4">
-                        <input type="password" placeholder="Password" id="password" name="password"/> 
+                        <input type="email" placeholder="Email"/>
+                        <i class="las la-envelope"></i> 
+                    </div>
+                    <div class="login-two-inputs mt-4">
+                        <input type="password" placeholder="Password"/> 
                         <i class="las la-lock"></i>
                     </div>
                     <div class="login-two-inputs  mt-4 check">
                         <div class="box">
                             <input id="one" type="checkbox">
                             <span class="check"></span>
-                            <label for="one">Remember me</label>
+                            <label for="one">I agree to the terms and policies</label>
                           </div>
                     </div>
-                
                     <div class="login-two-inputs mt-5 text-center d-flex">
-                        <button class="ripple-button ripple-button-primary w-100 btn-login ml-3 mr-3" type="submit">
+                        <button class="ripple-button ripple-button-primary w-100 btn-login ml-3 mr-3" type="button">
                             <div class="ripple-ripple js-ripple">
                             <span class="ripple-ripple__circle"></span>
                             </div>
-                            Login
-                        </button>
-                    </form>
-                        <a class="btn btn-sm btn-outline-primary btn-login w-100 ml-3 mr-3" href="/signup" type="button">
                             Signup
+                        </button>
+                        <a class="btn btn-sm btn-outline-primary btn-login w-100 ml-3 mr-3" href="/" type="button">
+                            Login
                         </a>
-                    </div>
-                    <div class="mt-4 text-center font-12 strong">
-                        <a href="auth_forget_password_2.html" class="text-primary">Forgot your Password ?</a>
                     </div>
                     <div class="login-two-inputs mt-4">
                         <div class="find-us-container">
                             <p class="find-us text-center">Continue With</p>
                         </div>
                     </div>
-                    <div class="login-two-inputs social-logins mt-4">
-                        <div class="social-btn"><a href="javascript:void(0)" class="fb-btn"><i class="lab la-facebook-f"></i></a></div>
-                        <div class="social-btn"><a href="javascript:void(0)" class="twitter-btn"><i class="lab la-twitter"></i>
-                        </a></div>
-                        <div class="social-btn"><a href="javascript:void(0)" class="google-btn"><i class="lab la-google-plus"></i>
-                        </a></div>
+                    <div class="login-two-inputs social-logins mt-3">
+                        <div class="social-btn">
+                            <a href="javascript:void(0)" class="fb-btn">
+                                <i class="lab la-facebook-f"></i>
+                            </a>
+                        </div>
+                        <div class="social-btn">
+                            <a href="javascript:void(0)" class="twitter-btn">
+                                <i class="lab la-twitter"></i>
+                            </a>
+                        </div>
+                        <div class="social-btn">
+                            <a hhref="javascript:void(0)" class="google-btn">
+                                <i class="lab la-google-plus"></i>
+                            </a>
+                        </div>
                     </div>
-            </div>
+                </div>
             </div>
         </div>  
     </div>
@@ -118,37 +127,7 @@
     <script src="{{ url_for('static',filename='common-assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static',filename='assets/js/authentication/auth_2.js') }}"></script>
     <!-- Page Level Plugin/Script Ends -->
-    <script>
-            
-        document.getElementById('myForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('login succesfully');// Prevent the default form submission
-
-            // Fetch form data
-            const formData = new FormData(this);
-
-            // Send form data to Flask route using AJAX
-            fetch('/do_login', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.text();
-                }
-                throw new Error('Network response was not ok.');
-            })
-            .then(data => {
-                console.log(data); // Log response from Flask
-                // Do something with the response if needed
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-            });
-        });
-    </script>
-
 </body>
 
-<!-- Mirrored from demo.neptuneapp.xyz/demo-1/ltr/auth_login_2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Mar 2023 12:43:38 GMT -->
+<!-- Mirrored from demo.neptuneapp.xyz/demo-1/ltr/auth_signup_2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 23 Mar 2023 12:43:38 GMT -->
 </html>
