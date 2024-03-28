@@ -63,7 +63,7 @@
                 <div class="login-two-start">
                     <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Login</h6>
                     <p class="text-center text-muted mt-1 mb-3 font-14">Please Log into your account</p>
-                    <form  id="myForm" action="login" method="post">
+                    <form  id="myForm" action="dashboard" method="post">
                     <div class="login-two-inputs mt-5">
                         <input type="email" placeholder="email" id="email" name="email"/>
                         <i class="las la-user-alt"></i> 
@@ -121,8 +121,7 @@
     <script>
             
         document.getElementById('myForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('login succesfully');// Prevent the default form submission
+            event.preventDefault();// Prevent the default form submission
 
             // Fetch form data
             const formData = new FormData(this);
@@ -134,7 +133,7 @@
             })
             .then(response => {
                 if (response.ok) {
-                    return response.text();
+                    window.location.href = '/dashboard'
                 }
                 throw new Error('Network response was not ok.');
             })

@@ -28,5 +28,9 @@ def do_login():
 def signup():
         return render_template("signup_page.html")
 
+@app.route("/dashboard",methods=["POST","GET"])
+def dashboard():
+        return render_template("main_layout.html")
+
 
 app.run(debug=True)
