@@ -24,7 +24,7 @@ def do_login():
         db.admin.insert_one(form_input)
         return  'Form submitted successfully. password: {}, Email: {}'.format(password, email)
 
-@app.route("/signup",methods=["POST","GET"])
+@app.route("/signup",methods=["POST","GET"]) 
 def signup():
         return render_template("signup_page.html")
 
