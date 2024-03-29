@@ -1,0 +1,123 @@
+{% extends 'main_layout.html'%}
+{% block title %} Internet {% endblock %}
+{% block content%}
+
+<!-- modal starts -->
+<div id="content" class="main-content">
+  <div class="col-lg-12 layout-spacing">
+    <div class="container">
+      <div class="row justify-content-end">
+        <div class="col-4">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal"> + Add Product</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content widget" >
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times; </span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form name='product' action="#" enctype="multipart/form-data" method="post"> {% if message  %} <div class="alert alert-secondary" role="alert">
+            <p>{{ message }}</p>
+          </div> {% endif %} <div class=" ">
+            <div class="w-100">
+              <div class="mt-2">
+                  <div class=" form-group row">
+                    <label class="col-3 ">product Title <span class="required" style="color: red;">*</span>
+                    </label>
+                    <div class="col-9">
+                      <input class="form-control form-control-solid" id="product_title" placeholder="Enter Title" name="product_title" type="text">
+                      <span class="has-error text-danger" for="product_title"></span>
+                    </div>
+                    </div>
+                    <div class=" form-group row">
+                      <label class="col-3">prdouct description <span class="required" style="color: red;">*</span>
+                      </label>
+                      <div class="col-9">
+                        <input class="form-control form-control-solid" id="product_description" placeholder="Enter Service Name" name="product_description" type="text">
+                        <span class="has-error text-danger" for="product_description"></span>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                      <label class="col-3 ">Price <span class="required" style="color: red;">*</span>
+                      </label>
+                      <div class="col-9">
+                        <input class="form-control form-control-solid" id="price" placeholder="Enter Price" name="price" type="number">
+                        <span class="has-error text-danger" for="price"></span>
+                      </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-3">photo<span class="required" style="color:red">*</span></label>
+                        <div class="col-9">
+                            <input class="form-control form-control-solid" id="photo" type="file" name="photo">
+                            <span class="has-error text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-top: 10px;">
+                      <div class="col-md-6 col-md-offset-4">
+                        <button type="submit" id="create-product" class="btn btn-primary float-end ">create product</button>
+                      </div>
+                    </div>
+                    </form>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- modal ends -->
+
+
+
+
+
+{% block script %}
+<script>
+     $(document).ready(function() {
+    $('#create-customer').click(function(){
+      $("form[name='product']").validate({
+        rules: {
+            product_title: 'required',
+            product_description: 'required',
+            price:'required',
+            photo:'required',
+
+        // Make sure the form is submitted to the destination defined
+        // in the "action" attribute of the form when valid
+        submitHandler: function(form) {
+          form.submit();
+        }
+    }});
+    });
+ });
+  
+      // Add text input to the footer
+    
+      // Search
+      $('#product').submit(function(){
+        e.preventDefault();
+    })
+
+      $('a.toggle-btn').on( 'click', function (e) {
+          e.preventDefault();
+          // Get the column API object
+          var column = table.column( $(this).attr('data-column') );
+          // Toggle the visibility
+          column.visible( ! column.visible() );
+          $(this).toggleClass("toggle-clicked");
+      } );
+
+</script>
+{% endblock %}
+ 
+
+{% endblock %}
