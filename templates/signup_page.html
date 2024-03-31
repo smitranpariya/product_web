@@ -29,6 +29,10 @@
             height: 100%;
             width: 100%;
         }
+        .hello {
+            list-style-type: none;
+            background-color: aqua;
+            }
     </style>
 </head>
 <body class="login-two">
@@ -64,16 +68,26 @@
                 <div class="login-two-start">
                     <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Sign Up</h6>
                     <p class="text-center text-muted mt-1 mb-3 font-14">Fill up and create an account</p>
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=" hello alert alert-secondary" role="alert">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% endwith %}
+                    <form action="{{ url_for('signup_page') }}" id="signup_form" method="post">
                     <div class="login-two-inputs mt-5">
-                        <input type="text" placeholder="User Name"/>
+                        <input type="text" placeholder="User Name" id = "username" name="username"/>
                         <i class="las la-user-alt"></i> 
                     </div>
                     <div class="login-two-inputs mt-4">
-                        <input type="email" placeholder="Email"/>
+                        <input type="email" placeholder="Email" id="email" name="email"/>
                         <i class="las la-envelope"></i> 
                     </div>
                     <div class="login-two-inputs mt-4">
-                        <input type="password" placeholder="Password"/> 
+                        <input type="password" placeholder="Password" id="password" name="password"/> 
                         <i class="las la-lock"></i>
                     </div>
                     <div class="login-two-inputs  mt-4 check">
@@ -84,12 +98,13 @@
                           </div>
                     </div>
                     <div class="login-two-inputs mt-5 text-center d-flex">
-                        <button class="ripple-button ripple-button-primary w-100 btn-login ml-3 mr-3" type="button">
+                        <button class="ripple-button ripple-button-primary w-100 btn-login ml-3 mr-3" type="submit">
                             <div class="ripple-ripple js-ripple">
                             <span class="ripple-ripple__circle"></span>
                             </div>
                             Signup
                         </button>
+                    </form>
                         <a class="btn btn-sm btn-outline-primary btn-login w-100 ml-3 mr-3" href="/" type="button">
                             Login
                         </a>
@@ -126,6 +141,8 @@
     <script src="{{ url_for('static',filename='assets/js/libs/jquery-3.1.1.min.js') }}"></script>
     <script src="{{ url_for('static',filename='common-assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static',filename='assets/js/authentication/auth_2.js') }}"></script>
+
+
     <!-- Page Level Plugin/Script Ends -->
 </body>
 

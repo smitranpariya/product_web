@@ -28,6 +28,10 @@
         .login-bg{
             background-image: url("{{url_for('static',filename='assets/img/empty-blackboard-with-black-friday-banner.jpg')}}");
         }
+        .hello {
+            list-style-type: none;
+            background-color: aqua;
+            }
     </style>
 </head>
 <body class="login-two">
@@ -63,7 +67,16 @@
                 <div class="login-two-start">
                     <h6 class="right-bar-heading px-3 mt-2 text-dark text-center font-30 text-uppercase">Login</h6>
                     <p class="text-center text-muted mt-1 mb-3 font-14">Please Log into your account</p>
-                    <form  id="myForm" action="dashboard" method="post">
+                    {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <ul class=" hello alert alert-secondary" role="alert">
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {% endwith %}
+                    <form  id="myForm" action="{{ url_for('dologin') }}" method="post">
                     <div class="login-two-inputs mt-5">
                         <input type="email" placeholder="email" id="email" name="email"/>
                         <i class="las la-user-alt"></i> 
@@ -118,34 +131,7 @@
     <script src="{{ url_for('static',filename='common-assets/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static',filename='assets/js/authentication/auth_2.js') }}"></script>
     <!-- Page Level Plugin/Script Ends -->
-    <script>
-            
-        document.getElementById('myForm').addEventListener('submit', function(event) {
-            event.preventDefault();// Prevent the default form submission
 
-            // Fetch form data
-            const formData = new FormData(this);
-
-            // Send form data to Flask route using AJAX
-            fetch('/do_login', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    window.location.href = '/dashboard'
-                }
-                throw new Error('Network response was not ok.');
-            })
-            .then(data => {
-                console.log(data); // Log response from Flask
-                // Do something with the response if needed
-            })
-            .catch(error => {
-                console.error('There has been a problem with your fetch operation:', error);
-            });
-        });
-    </script>
 
 </body>
 
