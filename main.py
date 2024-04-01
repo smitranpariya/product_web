@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash,session
+from flask import Flask, render_template, request, redirect, url_for, flash,session,send_file
+from bson import ObjectId
+import base64
 import bcrypt
 from flask_pymongo import PyMongo 
 from gridfs import GridFS
@@ -71,7 +73,58 @@ def logout():
 
 @app.route('/dashboard',methods=['POST','GET'])
 def dashboard():
-    return render_template("main_layout.html")
+    if 'email' in session:
+        return render_template("main_layout.html")
+    else:
+        return redirect(url_for('dologin'))
+    
+
+@app.route('/products',methods=['POST'])
+def products():
+    if 'email' in session:
+        product_title = request.form.get('product_title')
+        product_description = request.form.get('product_description')
+        price = request.form.get('price')
+        photo = request.files['photo']
+
+        if product_title and product_description and photo:
+            file_data = photo.read()
+            photo_id = fs.put(file_data, filename=photo.filename)
+            form_input = {
+            "product_title": product_title,
+            "product_description": product_description,
+            "price": price,
+            "photo": photo_id
+            }
+            db.products.insert_one(form_input)
+
+        return render_template('products.html')
+    else:
+        return redirect(url_for('dologin'))
+    
+@app.route('/products',methods=['GET'])
+def products_view():
+    if 'email' in session:
+        products = db.products.find() 
+        products_with_photos = []
+        for product in products:
+            photo_id = product.get('photo', None)
+            if photo_id:
+                photo_data = fs.get(ObjectId(photo_id)).read()
+                base64_photo_data = base64.b64encode(photo_data).decode('utf-8')
+                product['photo_data'] = base64_photo_data
+            products_with_photos.append(product) # Corrected from 'product' to 'products'
+        return render_template('products.html', products=products_with_photos)  # Corrected variable name to 'products'
+    else:
+        return redirect(url_for('dologin'))
+
+
+@app.route('/photo/<photo_id>',methods=['GET'])
+def photo(photo_id):
+    photo = fs.get(photo_id)
+    return send_file(photo,mimetype='image/jpeg')
+    
+        
     
 
 
