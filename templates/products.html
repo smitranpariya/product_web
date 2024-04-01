@@ -8,7 +8,7 @@
             padding: 20px;
             margin: 10px;
             width: 400px;
-            height: 500px;
+            height: 400px;
             display: inline-block;
             box-shadow: 0 4px 6px rgba(30, 12, 12, 0.1);
         }
@@ -42,7 +42,7 @@
                     {% endif %}
                     <h2>{{ product.product_title }}</h2>
                     <p>{{ product.product_description }}</p>
-                    <p>Price: {{ product.price }}</p>
+                    <p><strong>Price:</strong> {{ product.price }}</p>
                 </div>
             </div>
             {% endfor %}
